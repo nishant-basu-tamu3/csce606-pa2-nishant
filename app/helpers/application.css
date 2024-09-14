@@ -29,12 +29,3 @@ th.desc {
   background-color: red;
   color: white;
 }
-
-.sort-indicator {
-  font-size: 0.8em;
-  margin-left: 5px;
-}
-
-.sort-indicator[aria-hidden="true"] {
-  display: inline;
-}

@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Movies" %>
+
+<h1>Movies</h1>
+<p>Current Sort: <%= @current_sort %></p>
+
+<div id="movies">
+<table>
+<thead>
+<tr>
+<%
+=begin%>
+ <th>Title <%= link_to 'ASC', movies_path(sort_by: 'title_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'title_dsc'), remote: true %></th> 
+<%
+=end%>
+        <th class="<%= 'asc' if @current_sort == 'title_asc' %> <%= 'desc' if @current_sort == 'title_dsc' %>">
+          Title <%= link_to 'ASC', movies_path(sort_by: 'title_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'title_dsc'), remote: true %>
+        </th>
+<th>Rating <%= link_to 'ASC', movies_path(sort_by: 'rating_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rating_dsc'), remote: true %></th>
+<th>Release Date <%= link_to 'ASC', movies_path(sort_by: 'rd_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rd_dsc'), remote: true %></th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+ <% @movies.each do |movie| %>
+    <tr>
+    <td><%= movie.title %></td>
+    <td><%= movie.rating %></td>
+    <td><%= movie.release_date %></td>
+    <td><%= link_to "Show this movie", movie %></td>
+    </tr>
+  <% end %>
+</tbody>
+<tfoot>
+<tr>
+<td>
+<%= link_to "New movie", new_movie_path %>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div><% @current_sort %></div>

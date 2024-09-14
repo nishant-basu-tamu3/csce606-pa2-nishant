@@ -9,9 +9,27 @@
 <table>
 <thead>
 <tr>
-<th>Title <%= link_to 'ASC', movies_path(sort_by: 'title_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'title_dsc'), remote: true %></th>
-<th>Rating <%= link_to 'ASC', movies_path(sort_by: 'rating_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rating_dsc'), remote: true %></th>
-<th>Release Date <%= link_to 'ASC', movies_path(sort_by: 'rd_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rd_dsc'), remote: true %></th>
+<th class="<%= 'asc' if @current_sort == 'title_asc' %> <%= 'desc' if @current_sort == 'title_dsc' %>">
+  Title 
+  <%= link_to 'ASC', movies_path(sort_by: 'title_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'title_dsc'), remote: true %>
+  <% if @current_sort == 'title_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
+  <% elsif @current_sort == 'title_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
+  <% end %>
+</th>
+<th class="<%= 'asc' if @current_sort == 'rating_asc' %> <%= 'desc' if @current_sort == 'rating_dsc' %>">
+  Rating 
+  <%= link_to 'ASC', movies_path(sort_by: 'rating_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rating_dsc'), remote: true %>
+  <% if @current_sort == 'rating_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
+  <% elsif @current_sort == 'rating_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
+  <% end %>
+</th>
+<th class="<%= 'asc' if @current_sort == 'rd_asc' %> <%= 'desc' if @current_sort == 'rd_dsc' %>">
+  Release Date 
+  <%= link_to 'ASC', movies_path(sort_by: 'rd_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rd_dsc'), remote: true %>
+  <% if @current_sort == 'rd_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
+  <% elsif @current_sort == 'rd_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
+  <% end %>
+</th>
 <th>Link</th>
 </tr>
 </thead>
