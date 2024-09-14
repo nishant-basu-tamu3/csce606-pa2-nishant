@@ -20,11 +20,9 @@ class MoviesController < ApplicationController
       when "rd_dsc"
         @movies = @movies.order(release_date: :desc)
       end
-      @movies.each do |movie|
-        movie.update(sort_preference: sort_by)
-      end
+      session[:sort_preference] = sort_by
     else
-      sort_by = @movies.pluck(:sort_preference).uniq.first
+      sort_by = session[:sort_preference]
       if sort_by
         case sort_by
         when "title_asc"
