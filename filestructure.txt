@@ -1,3 +1,5 @@
+|-- .bundle
+    |-- config
 |-- .dockerignore
 |-- .gitattributes
 |-- .github
@@ -6,10 +8,16 @@
         |-- ci.yml
 |-- .gitignore
 |-- .rubocop.yml
+|-- .ruby-lsp
+    |-- .gitignore
+    |-- Gemfile
+    |-- Gemfile.lock
+    |-- main_lockfile_hash
 |-- .ruby-version
 |-- Dockerfile
 |-- Gemfile
 |-- Gemfile.lock
+|-- Procfile
 |-- README.md
 |-- Rakefile
 |-- app
@@ -28,8 +36,12 @@
         |-- application_controller.rb
         |-- concerns
             |-- .keep
+        |-- movies_controller.rb
     |-- helpers
+        |-- application.css
         |-- application_helper.rb
+        |-- index.html.erb
+        |-- movies_helper.rb
     |-- javascript
         |-- application.js
         |-- controllers
@@ -44,11 +56,22 @@
         |-- application_record.rb
         |-- concerns
             |-- .keep
+        |-- movie.rb
     |-- views
         |-- layouts
             |-- application.html.erb
             |-- mailer.html.erb
             |-- mailer.text.erb
+        |-- movies
+            |-- _form.html.erb
+            |-- _movie.html.erb
+            |-- _movie.json.jbuilder
+            |-- edit.html.erb
+            |-- index.html.erb
+            |-- index.json.jbuilder
+            |-- new.html.erb
+            |-- show.html.erb
+            |-- show.json.jbuilder
         |-- pwa
             |-- manifest.json.erb
             |-- service-worker.js
@@ -87,6 +110,9 @@
     |-- storage.yml
 |-- config.ru
 |-- db
+    |-- migrate
+        |-- 20240908152619_create_movies.rb
+    |-- schema.rb
     |-- seeds.rb
 |-- lib
     |-- assets
@@ -107,6 +133,7 @@
 |-- storage
     |-- .keep
     |-- development.sqlite3
+    |-- test.sqlite3
 |-- test
     |-- application_system_test_case.rb
     |-- channels
@@ -114,6 +141,7 @@
             |-- connection_test.rb
     |-- controllers
         |-- .keep
+        |-- movies_controller_test.rb
     |-- fixtures
         |-- files
             |-- .keep
@@ -127,6 +155,7 @@
         |-- .keep
     |-- system
         |-- .keep
+        |-- movies_test.rb
     |-- test_helper.rb
 |-- vendor
     |-- .keep
