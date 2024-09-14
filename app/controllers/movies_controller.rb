@@ -3,7 +3,46 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
+    sort_by = params[:sort_by]
     @movies = Movie.all
+    if params[:sort_by].present?
+      case sort_by
+      when "title_asc"
+        @movies = @movies.order(title: :asc)
+      when "title_dsc"
+        @movies = @movies.order(title: :desc)
+      when "rating_asc"
+        @movies = @movies.order(rating: :asc)
+      when "rating_dsc"
+        @movies = @movies.order(rating: :desc)
+      when "rd_asc"
+        @movies = @movies.order(release_date: :asc)
+      when "rd_dsc"
+        @movies = @movies.order(release_date: :desc)
+      end
+      @movies.each do |movie|
+        movie.update(sort_preference: sort_by)
+      end
+    else
+      sort_by = @movies.pluck(:sort_preference).uniq.first
+      if sort_by
+        case sort_by
+        when "title_asc"
+          @movies = @movies.order(title: :asc)
+        when "title_dsc"
+          @movies = @movies.order(title: :desc)
+        when "rating_asc"
+          @movies = @movies.order(rating: :asc)
+        when "rating_dsc"
+          @movies = @movies.order(rating: :desc)
+        when "rd_asc"
+          @movies = @movies.order(release_date: :asc)
+        when "rd_dsc"
+          @movies = @movies.order(release_date: :desc)
+        end
+      end
+    end
+    @current_sort = sort_by
   end
 
   # GET /movies/1 or /movies/1.json

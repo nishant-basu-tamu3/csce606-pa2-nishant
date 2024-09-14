@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ tfoot::before
+ {
+   content: '';
+   display: block;
+   height: 15px;
+ }
