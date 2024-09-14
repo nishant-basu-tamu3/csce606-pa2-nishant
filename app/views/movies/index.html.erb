@@ -1,34 +1,40 @@
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Movies" %>
-
-<h1>Movies</h1>
-<p>Current Sort: <%= @current_sort %></p>
+<div class="centered-bottom">
+<h1 class="centered-link-title">Movies</h1>
+</div>
 
 <div id="movies">
 <table>
 <thead>
 <tr>
 <th class="<%= 'asc' if @current_sort == 'title_asc' %> <%= 'desc' if @current_sort == 'title_dsc' %>">
-  Title 
+  Title
+  <div class="sort-buttons">
   <%= link_to 'ASC', movies_path(sort_by: 'title_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'title_dsc'), remote: true %>
   <% if @current_sort == 'title_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
   <% elsif @current_sort == 'title_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
   <% end %>
+  </div>
 </th>
 <th class="<%= 'asc' if @current_sort == 'rating_asc' %> <%= 'desc' if @current_sort == 'rating_dsc' %>">
   Rating 
+  <div class="sort-buttons">
   <%= link_to 'ASC', movies_path(sort_by: 'rating_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rating_dsc'), remote: true %>
   <% if @current_sort == 'rating_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
   <% elsif @current_sort == 'rating_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
   <% end %>
+  </div>
 </th>
 <th class="<%= 'asc' if @current_sort == 'rd_asc' %> <%= 'desc' if @current_sort == 'rd_dsc' %>">
   Release Date 
+  <div class="sort-buttons">
   <%= link_to 'ASC', movies_path(sort_by: 'rd_asc'), remote: true %> <%= link_to 'DSC', movies_path(sort_by: 'rd_dsc'), remote: true %>
   <% if @current_sort == 'rd_asc' %> <span class="sort-indicator" aria-hidden="true">▲</span>
   <% elsif @current_sort == 'rd_dsc' %> <span class="sort-indicator" aria-hidden="true">▼</span>
   <% end %>
+  </div>
 </th>
 <th>Link</th>
 </tr>
@@ -43,13 +49,9 @@
     </tr>
   <% end %>
 </tbody>
-<tfoot>
-<tr>
-<td>
-<%= link_to "New movie", new_movie_path %>
-</td>
-</tr>
-</tfoot>
 </table>
 </div>
-<div><% @current_sort %></div>
+
+<div class="centered-bottom">
+  <%= link_to "New movie", new_movie_path, class: 'centered-link-title' %>
+</div>

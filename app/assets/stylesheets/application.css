@@ -13,28 +13,112 @@
  *= require_tree .
  *= require_self
  */
- tfoot::before
- {
-   content: '';
-   display: block;
-   height: 15px;
- }
 
- th.asc {
-  background-color: green;
+
+.centered-link-title {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #50C878;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #50C878;
+}
+
+#movies {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  text-align: center;
+  padding: 12px;
+  border: 2px solid #ddd;
+}
+
+th {
+  border-bottom: 3px solid #ddd;
+  background-color: #50C878;
+  color: white;
+  position: relative;
+}
+
+tfoot::before {
+  content: '';
+  display: block;
+  height: 15px;
+}
+
+th.asc {
+  background-color: #007BFF;
   color: white;
 }
 
 th.desc {
-  background-color: red;
-  color: white;
+  background-color: #FFC107;
+  color: black;
 }
 
 .sort-indicator {
   font-size: 0.8em;
   margin-left: 5px;
+  color: white;
 }
 
 .sort-indicator[aria-hidden="true"] {
   display: inline;
+}
+
+.centered-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+td {
+  background-color: #F0F8FF;
+  color: #4169E1;
+}
+
+.form-container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid #aaa;
+}
+
+.movie-form {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
 }
